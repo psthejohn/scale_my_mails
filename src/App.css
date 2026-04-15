@@ -1,20 +1,24 @@
 main {
   min-height: 100vh;
-  overflow: hidden;
+  overflow-x: clip;
 }
 
 .site-header {
   position: sticky;
   top: 0;
-  z-index: 10;
+  z-index: 20;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  width: min(1180px, calc(100% - 40px));
-  margin: 0 auto;
-  padding: 18px 0;
-  backdrop-filter: blur(18px);
+  width: min(1200px, calc(100% - 32px));
+  margin: 12px auto 0;
+  padding: 12px;
+  border: 1px solid rgba(31, 41, 55, 0.1);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 18px 48px rgba(18, 38, 63, 0.1);
+  backdrop-filter: blur(20px);
 }
 
 .brand,
@@ -23,6 +27,7 @@ main {
 .panel-topline,
 .metrics-strip,
 .email-lab,
+.image-band,
 .final-cta {
   display: flex;
   align-items: center;
@@ -55,10 +60,8 @@ main {
 .site-header nav {
   gap: 8px;
   padding: 6px;
-  border: 1px solid rgba(31, 41, 55, 0.1);
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.82);
-  box-shadow: 0 16px 50px rgba(18, 38, 63, 0.08);
+  background: rgba(239, 246, 255, 0.72);
 }
 
 .site-header nav a,
@@ -93,7 +96,7 @@ main {
   width: min(1180px, calc(100% - 40px));
   min-height: 680px;
   margin: 0 auto;
-  padding: 76px 0 92px;
+  padding: 66px 0 92px;
 }
 
 .hero-section::before {
@@ -112,21 +115,22 @@ main {
 
 .hero-art {
   position: absolute;
-  right: 12%;
-  top: 112px;
-  width: min(28vw, 300px);
+  right: 5%;
+  top: 92px;
+  width: min(20vw, 220px);
   min-width: 190px;
   opacity: 0.78;
   filter: drop-shadow(0 32px 54px rgba(67, 56, 202, 0.22));
 }
 
 .hero-copy,
+.hero-visual,
 .signal-panel,
 .section-heading,
 .service-card,
 .review-card,
 .email-lab,
-.price-card,
+.contact-card,
 .process-list,
 .final-cta {
   position: relative;
@@ -201,10 +205,27 @@ h1 {
   color: var(--ink);
 }
 
-.signal-panel {
+.hero-visual {
   z-index: 1;
-  align-self: end;
-  margin-bottom: 40px;
+  align-self: stretch;
+  min-height: 540px;
+}
+
+.hero-visual > img {
+  width: 100%;
+  height: 100%;
+  min-height: 540px;
+  border: 1px solid rgba(31, 41, 55, 0.1);
+  border-radius: 8px;
+  object-fit: cover;
+  box-shadow: 0 34px 90px rgba(18, 38, 63, 0.18);
+}
+
+.signal-panel {
+  position: absolute;
+  right: 22px;
+  bottom: 22px;
+  width: min(330px, calc(100% - 44px));
   padding: 22px;
   border: 1px solid rgba(31, 41, 55, 0.12);
   border-radius: 8px;
@@ -274,6 +295,7 @@ h1 {
 
 .section,
 .email-lab,
+.image-band,
 .final-cta {
   width: min(1180px, calc(100% - 40px));
   margin: 0 auto;
@@ -299,8 +321,7 @@ h1 {
   line-height: 1.7;
 }
 
-.service-grid,
-.pricing-grid {
+.service-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 16px;
@@ -308,7 +329,7 @@ h1 {
 }
 
 .service-card,
-.price-card,
+.contact-card,
 .review-card,
 .email-card {
   border: 1px solid rgba(31, 41, 55, 0.1);
@@ -323,7 +344,6 @@ h1 {
 }
 
 .service-card span,
-.price-card > span,
 .email-card span {
   color: #0f766e;
   font-size: 12px;
@@ -340,7 +360,7 @@ h1 {
 
 .service-card p,
 .email-card p,
-.price-card p,
+.contact-card p,
 .review-card blockquote {
   margin-top: 14px;
   color: var(--muted);
@@ -373,6 +393,52 @@ h1 {
   font-weight: 800;
 }
 
+.image-band {
+  gap: 18px;
+  padding-top: 0;
+}
+
+.image-band article {
+  position: relative;
+  flex: 1;
+  min-height: 390px;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #111827;
+  box-shadow: 0 20px 60px rgba(18, 38, 63, 0.16);
+}
+
+.image-band img {
+  width: 100%;
+  height: 100%;
+  min-height: 390px;
+  object-fit: cover;
+  opacity: 0.78;
+}
+
+.image-band article::after {
+  position: absolute;
+  inset: 0;
+  content: '';
+  background: linear-gradient(180deg, transparent 28%, rgba(17, 24, 39, 0.86));
+}
+
+.image-band article div {
+  position: absolute;
+  right: 24px;
+  bottom: 24px;
+  left: 24px;
+  z-index: 1;
+}
+
+.image-band h3 {
+  max-width: 520px;
+  margin-top: 10px;
+  color: #ffffff;
+  font-size: 30px;
+  line-height: 1.1;
+}
+
 .email-lab {
   justify-content: space-between;
   gap: 34px;
@@ -397,48 +463,29 @@ h1 {
   background: linear-gradient(180deg, #ffffff, #f7fbff);
 }
 
-.pricing-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
-.price-card {
-  padding: 26px;
-}
-
-.price-card.featured {
-  border-color: rgba(255, 122, 89, 0.48);
-  background:
-    linear-gradient(180deg, rgba(255, 246, 241, 0.9), rgba(255, 255, 255, 0.96)),
-    #ffffff;
-  transform: translateY(-10px);
-}
-
-.price-card h3 {
-  margin-top: 18px;
-  font-size: 46px;
-}
-
-.price-card small {
-  color: var(--muted);
-  font-size: 15px;
-}
-
-.price-card ul {
+.contact-section {
   display: grid;
-  gap: 12px;
-  margin: 24px 0 0;
-  padding: 0;
-  list-style: none;
+  grid-template-columns: 0.82fr 1.18fr;
+  gap: 34px;
+  align-items: start;
 }
 
-.price-card li {
-  color: var(--ink);
+.contact-grid {
+  display: grid;
+  gap: 14px;
 }
 
-.price-card li::before {
-  margin-right: 10px;
-  color: #0f766e;
-  content: '✓';
+.contact-card {
+  padding: 24px;
+}
+
+.contact-card h3 {
+  font-size: 24px;
+}
+
+.contact-button {
+  grid-column: 2;
+  justify-self: start;
 }
 
 .process-section {
@@ -503,7 +550,7 @@ h1 {
 
 @media (max-width: 980px) {
   .site-header {
-    align-items: flex-start;
+    align-items: center;
   }
 
   .site-header nav {
@@ -512,6 +559,7 @@ h1 {
 
   .hero-section,
   .split-section,
+  .contact-section,
   .process-section {
     grid-template-columns: 1fr;
   }
@@ -527,24 +575,31 @@ h1 {
     opacity: 0.42;
   }
 
+  .hero-visual,
+  .hero-visual > img {
+    min-height: 420px;
+  }
+
   .signal-panel {
-    margin-bottom: 0;
+    right: 16px;
+    bottom: 16px;
+    width: min(330px, calc(100% - 32px));
   }
 
   .metrics-strip,
-  .email-lab {
+  .email-lab,
+  .image-band {
     align-items: stretch;
     flex-direction: column;
   }
 
   .service-grid,
-  .pricing-grid,
   .email-list {
     grid-template-columns: 1fr;
   }
 
-  .price-card.featured {
-    transform: none;
+  .contact-button {
+    grid-column: 1;
   }
 }
 
@@ -554,6 +609,7 @@ h1 {
   .metrics-strip,
   .section,
   .email-lab,
+  .image-band,
   .final-cta {
     width: min(100% - 28px, 1180px);
   }
@@ -578,6 +634,32 @@ h1 {
   .section,
   .email-lab {
     padding: 62px 0;
+  }
+
+  .image-band {
+    padding: 0 0 62px;
+  }
+
+  .hero-visual,
+  .hero-visual > img {
+    min-height: 360px;
+  }
+
+  .signal-panel {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    width: 100%;
+    margin-top: -84px;
+  }
+
+  .image-band article,
+  .image-band img {
+    min-height: 310px;
+  }
+
+  .image-band h3 {
+    font-size: 24px;
   }
 
   .final-cta {

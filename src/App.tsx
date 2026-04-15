@@ -1,7 +1,16 @@
 import heroImg from './assets/hero.png'
 import './App.css'
 
-const navItems = ['Services', 'Proof', 'Pricing', 'Process']
+const navItems = ['Services', 'Proof', 'Process', 'Contact']
+
+const imageSet = {
+  hero:
+    'https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1200&q=80',
+  strategy:
+    'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80',
+  workspace:
+    'https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=80',
+}
 
 const metrics = [
   { value: '30-60', label: 'days to launch a revenue-ready email system' },
@@ -32,25 +41,18 @@ const services = [
   },
 ]
 
-const packages = [
+const contactReasons = [
   {
-    name: 'Starter',
-    price: '$800',
-    detail: 'for small lists that need consistent campaigns',
-    items: ['2 campaigns per month', 'Monthly performance report', 'Subject line testing', 'Async Loom update'],
+    title: 'Audit first',
+    copy: 'Send your store, funnel, or email platform details and get a practical first diagnosis before any retainer talk.',
   },
   {
-    name: 'Growth',
-    price: '$2,000',
-    detail: 'for brands ready to turn email into a channel',
-    items: ['4-6 campaigns per month', '1 core automation flow', 'Bi-weekly strategy call', 'Copy, design direction, QA'],
-    featured: true,
+    title: 'Scope privately',
+    copy: 'Pricing depends on list size, campaign volume, automation depth, and how much your team wants handled.',
   },
   {
-    name: 'Full-Service',
-    price: '$4,500',
-    detail: 'for teams that want email handled end to end',
-    items: ['Weekly campaigns', 'Full lifecycle automation', 'Weekly reporting cadence', 'Freelancer support managed'],
+    title: 'Move async',
+    copy: 'Most planning, approvals, reporting, and revisions can happen through Loom, email, and shared docs.',
   },
 ]
 
@@ -130,23 +132,29 @@ function App() {
             <a className="primary-button" href="mailto:hello@scalemymail.com">
               Get a free audit
             </a>
-            <a className="secondary-button" href="#pricing">
-              View packages
+            <a className="secondary-button" href="#contact">
+              Contact us
             </a>
           </div>
         </div>
-        <div className="signal-panel" aria-label="Campaign scorecard preview">
-          <div className="panel-topline">
-            <span>April revenue system</span>
-            <strong>Live</strong>
-          </div>
-          <div className="score-grid">
-            <span>Welcome flow</span>
-            <strong>Ready</strong>
-            <span>Campaign queue</span>
-            <strong>6 emails</strong>
-            <span>Report cadence</span>
-            <strong>Monthly</strong>
+        <div className="hero-visual">
+          <img
+            src={imageSet.hero}
+            alt="A focused marketing team reviewing campaign work on laptops"
+          />
+          <div className="signal-panel" aria-label="Campaign scorecard preview">
+            <div className="panel-topline">
+              <span>April revenue system</span>
+              <strong>Live</strong>
+            </div>
+            <div className="score-grid">
+              <span>Welcome flow</span>
+              <strong>Ready</strong>
+              <span>Campaign queue</span>
+              <strong>6 emails</strong>
+              <span>Report cadence</span>
+              <strong>Monthly</strong>
+            </div>
           </div>
         </div>
       </section>
@@ -199,6 +207,23 @@ function App() {
         </div>
       </section>
 
+      <section className="image-band" aria-label="Email marketing workspace">
+        <article>
+          <img src={imageSet.strategy} alt="Campaign reporting and strategy work on a laptop" />
+          <div>
+            <p className="eyebrow">Strategy</p>
+            <h3>Every email starts with a revenue reason.</h3>
+          </div>
+        </article>
+        <article>
+          <img src={imageSet.workspace} alt="A clean workspace used for client delivery and planning" />
+          <div>
+            <p className="eyebrow">Delivery</p>
+            <h3>Async updates keep clients moving without extra calls.</h3>
+          </div>
+        </article>
+      </section>
+
       <section className="email-lab" aria-label="Sample email ideas">
         <div>
           <p className="eyebrow">Sample emails</p>
@@ -215,30 +240,26 @@ function App() {
         </div>
       </section>
 
-      <section className="section" id="pricing">
+      <section className="section contact-section" id="contact">
         <div className="section-heading">
-          <p className="eyebrow">USD pricing, lean delivery</p>
-          <h2>Packages designed for high-margin solo operations.</h2>
+          <p className="eyebrow">Contact us for scope</p>
+          <h2>No public pricing table. Start with the audit, then quote the right work.</h2>
           <p>
-            Start with retainers, add one-time automation builds, and keep delivery light
-            through templates, QA checklists, Loom updates, and specialist freelancers only
-            when the client budget supports it.
+            This keeps the offer flexible for campaigns, automations, setup projects, and
+            monthly retainers without making the page feel like a cheap menu.
           </p>
         </div>
-        <div className="pricing-grid">
-          {packages.map((plan) => (
-            <article className={plan.featured ? 'price-card featured' : 'price-card'} key={plan.name}>
-              <span>{plan.name}</span>
-              <h3>{plan.price}<small>/mo</small></h3>
-              <p>{plan.detail}</p>
-              <ul>
-                {plan.items.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
+        <div className="contact-grid">
+          {contactReasons.map((item) => (
+            <article className="contact-card" key={item.title}>
+              <h3>{item.title}</h3>
+              <p>{item.copy}</p>
             </article>
           ))}
         </div>
+        <a className="primary-button contact-button" href="mailto:hello@scalemymail.com">
+          Contact us
+        </a>
       </section>
 
       <section className="section process-section" id="process">
