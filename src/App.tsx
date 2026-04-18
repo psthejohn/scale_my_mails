@@ -174,6 +174,7 @@ function App() {
   const contactRef = useScrollReveal()
   const processRef = useScrollReveal()
   const faqRef = useScrollReveal()
+  const finalCtaRef = useScrollReveal()
   
   return (
     <main>
@@ -395,7 +396,7 @@ function App() {
         </div>
       </section>
 
-      <section className="final-cta reveal">
+      <section className="final-cta reveal" ref={finalCtaRef}>
         <p className="eyebrow">Ready to start</p>
         <h2>Get a free email audit, a 90-day plan, and a clear path forward.</h2>
         <a className="primary-button" href="mailto:hello@scalemymail.com">
