@@ -38,9 +38,9 @@ const imageSet = {
 }
 
 const metrics = [
-  { value: '30-60', label: 'days to launch an email revenue system' },
-  { value: '4.8x', label: 'average ROI from email alone' },
-  { value: 'Email-first', label: 'strategy for US, UK, AUS, EU founders' },
+  { value: '5+', label: 'years designing emails for US & Canadian DTC brands' },
+  { value: 'Klaviyo', label: 'certified specialist — the platform Shopify stores trust' },
+  { value: '$600', label: 'starting price — free audit to begin' },
 ]
 
 const whyUs = [
@@ -201,7 +201,7 @@ function App() {
           <p className="eyebrow">Email-only agency for international founders</p>
           <h1>Email design, copy, and tools setup for revenue-focused founders.</h1>
           <p className="hero-lede">
-            India-based email specialists crafting high-converting sequences and automations for US, UK, AUS, and EU businesses. We do one thing: turn quiet email lists into predictable monthly revenue.
+            Bharpur Kour is a Klaviyo-certified email designer with 5+ years building campaigns for US and Canadian e-commerce brands. Scale My Mails is her agency — built to deliver the same quality work directly to founders, at honest prices.
           </p>
           <div className="why-us-highlights">
             {whyUs.map((item) => (
@@ -327,19 +327,24 @@ function App() {
       <section className="section founder-section reveal" ref={founderRef} id="about">
         <div className="section-heading">
           <p className="eyebrow">About the founder</p>
-          <h2>Built by someone who obsesses over email performance.</h2>
+          <h2>Built by a Klaviyo-certified email designer with 5 years of real client work.</h2>
         </div>
         <div className="founder-card">
-          <div className="founder-avatar">PS</div>
+          <div className="founder-avatar">BK</div>
           <div className="founder-content">
-            <h3>Built by someone who understands both systems and revenue.</h3>
+            <h3>Bharpur Kour — Founder, Scale My Mails</h3>
             <p>
-              After spending years in enterprise software engineering, I built Scale My Mail to apply the same systems thinking to email marketing for e-commerce founders. We're a lean, India-based team that runs async-first — which means faster delivery, lower costs, and cleaner execution than most Western agencies.
+              Bharpur has spent 5+ years designing and building email campaigns for e-commerce brands across the US, UK, and Canada — working with agencies like Porter Media and Sweat Pants Agency, where she handled everything from welcome sequences to full Klaviyo automation builds.
+            </p>
+            <p>
+              She founded Scale My Mails to do the same work — directly for founders, without the agency middleman markup.
             </p>
             <div className="founder-creds">
-              <span>✓ Email revenue focus since 2023</span>
-              <span>✓ Async-first delivery model</span>
-              <span>✓ Built for US, UK, AUS, EU founders</span>
+              <span>✓ Klaviyo Certified Specialist</span>
+              <span>✓ 5+ years email design for DTC brands</span>
+              <span>✓ Google Email Marketing Certified</span>
+              <span>✓ HTML/CSS coded emails — not just Canva</span>
+              <span>✓ Currently building for US, UK, AUS founders</span>
             </div>
           </div>
         </div>
