@@ -46,8 +46,7 @@ const metrics = [
 const whyUs = [
   { icon: '📧', text: 'Email-focused expertise', subtext: 'Only email design, copy, and setup' },
   { icon: '⚡', text: '30-60 day execution', subtext: 'From audit to live campaigns' },
-  { icon: '📊', text: '4.8x avg ROI', subtext: 'Measurable email revenue' },
-  { icon: '🌍', text: 'Async delivery worldwide', subtext: 'US/UK/AUS/EU time zones' },
+{ icon: '🏆', text: 'Klaviyo Certified', subtext: 'Certified on the #1 Shopify email tool' },  { icon: '🌍', text: 'Async delivery worldwide', subtext: 'US/UK/AUS/EU time zones' },
 ]
 
 const services = [
