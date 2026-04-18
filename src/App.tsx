@@ -79,8 +79,8 @@ const contactReasons = [
     copy: 'Send your store, funnel, or email platform details and get a practical first diagnosis before any retainer talk.',
   },
   {
-    title: 'Scope privately',
-    copy: 'Pricing depends on list size, campaign volume, automation depth, and how much your team wants handled.',
+    title: 'Starting at $600/month',
+    copy: 'Launch packages + full retainers tailored to your list size, campaign volume, and automation needs. We scope together first.',
   },
   {
     title: 'Move async',
@@ -91,18 +91,18 @@ const contactReasons = [
 const proof = [
   {
     quote:
-      'The audit found revenue leaks we had ignored for months. The first sequence was clear, fast, and easy for our team to approve.',
-    person: 'DTC founder, United States',
+      'Be our first case study. Get 50% off your first month and help us build proof as we scale.',
+    person: 'Limited time offer',
   },
   {
     quote:
-      'The async updates were better than another agency meeting. We always knew what was shipped, what was next, and what needed approval.',
-    person: 'SaaS operator, United Kingdom',
+      'Early founders get priority access to our async workflow, unlimited revisions during your first audit, and direct founder feedback.',
+    person: 'Launch partner benefit',
   },
   {
     quote:
-      'The emails felt like our voice, not a template. Campaigns became a predictable part of our monthly revenue instead of a scramble.',
-    person: 'Online educator, Australia',
+      'We\'re building this with real clients. If you\'re an e-commerce founder ready to scale email revenue, let\'s work together.',
+    person: 'Scale My Mails, 2026',
   },
 ]
 
@@ -145,7 +145,7 @@ const faq = [
   {
     question: 'What\'s the typical retainer?',
     answer:
-      'Monthly retainers range from $1,500 to $8,000 USD depending on list size, campaign frequency, automation depth, and design complexity. One-time projects and audits are separately quoted.',
+      'We start at $600/month for audit + launch support. Full retainers range from $1,500 to $8,000 USD depending on list size, campaign frequency, automation depth, and design complexity. Get a free audit first to scope your actual needs.',
   },
   {
     question: 'How do async approvals work?',
@@ -190,7 +190,7 @@ function App() {
             </a>
           ))}
         </nav>
-        <a className="header-cta" href="mailto:hello@scalemymail.com">
+        <a className="header-cta" href="mailto:hello@scalemymails.com">
           Book audit
         </a>
       </header>
@@ -215,7 +215,7 @@ function App() {
             ))}
           </div>
           <div className="hero-actions">
-            <a className="primary-button" href="mailto:hello@scalemymail.com">
+            <a className="primary-button" href="mailto:hello@scalemymails.com">
               Get a free email audit
             </a>
             <a className="secondary-button" href="#contact">
@@ -275,10 +275,10 @@ function App() {
 
       <section className="section split-section reveal" ref={proofRef} id="proof">
         <div className="section-heading">
-          <p className="eyebrow">Client proof</p>
-          <h2>Real email outcomes from real founders.</h2>
+          <p className="eyebrow">Early launch partners</p>
+          <h2>Be part of building this.</h2>
           <p>
-            These clients started with email audits, moved to retainer campaigns, and now run monthly revenue sequences autonomously. Anonymous but verified.
+            We're looking for 3-5 e-commerce founders to be our launch partners. Get 50% off your first month, priority support, and unlimited revisions on your first email audit.
           </p>
         </div>
         <div className="review-stack">
@@ -332,14 +332,14 @@ function App() {
         <div className="founder-card">
           <div className="founder-avatar">PS</div>
           <div className="founder-content">
-            <h3>5+ years scaling email for SaaS and DTC brands.</h3>
+            <h3>Built by someone who understands both systems and revenue.</h3>
             <p>
-              After managing email systems that generated $50M+ in revenue, I built Scale My Mail to offer that same expertise to international founders at service rates. We run on a lean India-based team, async-first workflow, and one core belief: email should be your highest-ROI marketing channel. No template work, no shortcuts.
+              After spending years in enterprise software engineering, I built Scale My Mail to apply the same systems thinking to email marketing for e-commerce founders. We're a lean, India-based team that runs async-first — which means faster delivery, lower costs, and cleaner execution than most Western agencies.
             </p>
             <div className="founder-creds">
-              <span>✓ Email-only specialist since 2019</span>
-              <span>✓ $50M+ email revenue managed</span>
-              <span>✓ SaaS, DTC, courses, marketplaces</span>
+              <span>✓ Email revenue focus since 2023</span>
+              <span>✓ Async-first delivery model</span>
+              <span>✓ Built for US, UK, AUS, EU founders</span>
             </div>
           </div>
         </div>
@@ -361,7 +361,7 @@ function App() {
             </article>
           ))}
         </div>
-        <a className="primary-button contact-button" href="mailto:hello@scalemymail.com">
+        <a className="primary-button contact-button" href="mailto:hello@scalemymails.com">
           Get your email audit
         </a>
       </section>
@@ -399,7 +399,7 @@ function App() {
       <section className="final-cta reveal" ref={finalCtaRef}>
         <p className="eyebrow">Ready to start</p>
         <h2>Get a free email audit, a 90-day plan, and a clear path forward.</h2>
-        <a className="primary-button" href="mailto:hello@scalemymail.com">
+        <a className="primary-button" href="mailto:hello@scalemymails.com">
           Book your email audit
         </a>
       </section>
@@ -423,8 +423,8 @@ function App() {
             <div>
               <h4>Company</h4>
               <a href="#about">About</a>
-              <a href="mailto:hello@scalemymail.com">Contact</a>
-              <a href="mailto:hello@scalemymail.com?subject=Press">Press</a>
+              <a href="mailto:hello@scalemymails.com">Contact</a>
+              <a href="mailto:hello@scalemymails.com?subject=Press">Press</a>
             </div>
             <div>
               <h4>Legal</h4>
@@ -435,7 +435,7 @@ function App() {
         </div>
         <div className="footer-bottom">
           <p>&copy; 2026 Scale My Mail. Email specialists for US, UK, AUS, and EU founders.</p>
-          <p>Email: <a href="mailto:hello@scalemymail.com">hello@scalemymail.com</a></p>
+          <p>Email: <a href="mailto:hello@scalemymails.com">hello@scalemymails.com</a></p>
         </div>
       </footer>
     </main>
