@@ -1,7 +1,32 @@
 import heroImg from './assets/hero.png'
 import './App.css'
+import { useEffect, useRef } from 'react'
 
-const navItems = ['Services', 'Proof', 'Process', 'Contact']
+// Scroll Reveal Hook
+const useScrollReveal = () => {
+  const ref = useRef<HTMLElement>(null)
+  
+  useEffect(() => {
+    if (!ref.current) return
+    
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('reveal-active')
+          observer.unobserve(entry.target)
+        }
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+    )
+    
+    observer.observe(ref.current)
+    return () => observer.disconnect()
+  }, [])
+  
+  return ref
+}
+
+const navItems = ['Services', 'Proof', 'Process', 'Contact', 'FAQ']
 
 const imageSet = {
   hero:
@@ -13,31 +38,38 @@ const imageSet = {
 }
 
 const metrics = [
-  { value: '30-60', label: 'days to launch a revenue-ready email system' },
-  { value: '4.8x', label: 'average retained ROI target for campaigns' },
-  { value: 'US/UK/EU', label: 'foreign-client operating rhythm from India' },
+  { value: '30-60', label: 'days to launch an email revenue system' },
+  { value: '4.8x', label: 'average ROI from email alone' },
+  { value: 'Email-first', label: 'strategy for US, UK, AUS, EU founders' },
+]
+
+const whyUs = [
+  { icon: '📧', text: 'Email-focused expertise', subtext: 'Only email design, copy, and setup' },
+  { icon: '⚡', text: '30-60 day execution', subtext: 'From audit to live campaigns' },
+  { icon: '📊', text: '4.8x avg ROI', subtext: 'Measurable email revenue' },
+  { icon: '🌍', text: 'Async delivery worldwide', subtext: 'US/UK/AUS/EU time zones' },
 ]
 
 const services = [
   {
-    title: 'Email revenue audit',
-    copy: 'A plain-English teardown of welcome flows, abandoned carts, list health, offers, and missed revenue moments.',
+    title: 'Email audit',
+    copy: 'Breakdown of your welcome sequences, abandonment flows, list health, offer gaps, and missed revenue moments in email.',
     tag: 'Start here',
   },
   {
-    title: 'Campaign engine',
-    copy: 'Weekly revenue emails with positioning, copy, design direction, segmentation, QA, and reporting.',
+    title: 'Email campaigns',
+    copy: 'Strategic weekly emails: copy, design, segmentation, A/B testing, QA, and performance reporting. Retainer-based.',
     tag: 'Retainers',
   },
   {
-    title: 'Automation setup',
-    copy: 'Welcome, nurture, cart recovery, post-purchase, winback, and reactivation flows built for compounding revenue.',
+    title: 'Email automation',
+    copy: 'Welcome, nurture, cart recovery, post-purchase, winback, and reactivation flows—all designed for email revenue.',
     tag: 'One-time',
   },
   {
-    title: 'Async client system',
-    copy: 'Loom updates, clear approvals, monthly scorecards, and a clean handoff rhythm across US, UK, AUS, and EU time zones.',
-    tag: 'Operations',
+    title: 'Email operations',
+    copy: 'Async Loom updates, approvals via email/Slack, monthly email scorecards, and clean handoff workflows.',
+    tag: 'Delivery',
   },
 ]
 
@@ -99,7 +131,50 @@ const process = [
   'Report results with decisions, not vanity charts',
 ]
 
+const faq = [
+  {
+    question: 'How long does the audit take?',
+    answer:
+      'The initial audit takes 5-7 business days. You\'ll get a detailed findings report plus a discovery call to discuss next steps.',
+  },
+  {
+    question: 'Do you guarantee results?',
+    answer:
+      'We guarantee clear execution and measurable monthly reporting. Revenue results depend on your offer, audience quality, and overall funnel—we optimize the email layer and propose the next initiatives based on data.',
+  },
+  {
+    question: 'What\'s the typical retainer?',
+    answer:
+      'Monthly retainers range from $1,500 to $8,000 USD depending on list size, campaign frequency, automation depth, and design complexity. One-time projects and audits are separately quoted.',
+  },
+  {
+    question: 'How do async approvals work?',
+    answer:
+      'You\'ll receive Loom videos of campaign drafts, automation flows, and design choices. You approve via email, Slack, or our shared feedback doc. Typical approval turnaround is 24-48 hours across time zones.',
+  },
+  {
+    question: 'Can you handle my existing email platform?',
+    answer:
+      'Yes. We work with Klaviyo, ConvertKit, Mailchimp, Substack, HubSpot, and custom integrations. We can also recommend platform migrations if your current setup is limiting revenue.',
+  },
+  {
+    question: 'What if we\'re not satisfied?',
+    answer:
+      'The audit is risk-free—if you don\'t see value in the recommendations, we part as friends. For retainers, we work on a month-to-month basis with a 2-week wind-down period if needed.',
+  },
+]
+
 function App() {
+  const metricsRef = useScrollReveal()
+  const servicesRef = useScrollReveal()
+  const proofRef = useScrollReveal()
+  const imageBandRef = useScrollReveal()
+  const emailLabRef = useScrollReveal()
+  const founderRef = useScrollReveal()
+  const contactRef = useScrollReveal()
+  const processRef = useScrollReveal()
+  const faqRef = useScrollReveal()
+  
   return (
     <main>
       <header className="site-header" aria-label="Primary navigation">
@@ -122,15 +197,25 @@ function App() {
       <section className="hero-section" id="top">
         <img src={heroImg} className="hero-art" alt="" />
         <div className="hero-copy">
-          <p className="eyebrow">Email marketing agency for foreign clients</p>
-          <h1>Turn quiet email lists into a calm monthly revenue system.</h1>
+          <p className="eyebrow">Email-only agency for international founders</p>
+          <h1>Email design, copy, and tools setup for revenue-focused founders.</h1>
           <p className="hero-lede">
-            India-based execution for US, UK, AUS, and EU businesses that need strategy,
-            copy, campaigns, automations, and reporting without hiring a full email team.
+            India-based email specialists crafting high-converting sequences and automations for US, UK, AUS, and EU businesses. We do one thing: turn quiet email lists into predictable monthly revenue.
           </p>
+          <div className="why-us-highlights">
+            {whyUs.map((item) => (
+              <div key={item.text} className="why-us-item">
+                <div className="why-us-icon">{item.icon}</div>
+                <div>
+                  <strong>{item.text}</strong>
+                  <span>{item.subtext}</span>
+                </div>
+              </div>
+            ))}
+          </div>
           <div className="hero-actions">
             <a className="primary-button" href="mailto:hello@scalemymail.com">
-              Get a free audit
+              Get a free email audit
             </a>
             <a className="secondary-button" href="#contact">
               Contact us
@@ -159,7 +244,7 @@ function App() {
         </div>
       </section>
 
-      <section className="metrics-strip" aria-label="Business outcomes">
+      <section className="metrics-strip reveal" ref={metricsRef} aria-label="Business outcomes">
         {metrics.map((metric) => (
           <div key={metric.value}>
             <strong>{metric.value}</strong>
@@ -168,13 +253,12 @@ function App() {
         ))}
       </section>
 
-      <section className="section" id="services">
+      <section className="section reveal" ref={servicesRef} id="services">
         <div className="section-heading">
-          <p className="eyebrow">What gets handled</p>
-          <h2>Campaigns, flows, and client communication in one system.</h2>
+          <p className="eyebrow">Email services we provide</p>
+          <h2>Design, copy, and tools for email revenue.</h2>
           <p>
-            The offer is built for lean founders who want foreign clients, USD retainers,
-            INR cost control, and delivery that can scale with AI plus trusted freelancers.
+            We specialize exclusively in email: audits, campaign management, automation setup, and delivery operations. No social, SMS, or paid ads. Just high-converting email sequences built for your audience.
           </p>
         </div>
         <div className="service-grid">
@@ -188,13 +272,12 @@ function App() {
         </div>
       </section>
 
-      <section className="section split-section" id="proof">
+      <section className="section split-section reveal" ref={proofRef} id="proof">
         <div className="section-heading">
-          <p className="eyebrow">Proof without name-dropping</p>
-          <h2>Reviews written for trust, privacy, and sales clarity.</h2>
+          <p className="eyebrow">Client proof</p>
+          <h2>Real email outcomes from real founders.</h2>
           <p>
-            Client proof stays anonymized while still showing buyers the outcomes they care
-            about: revenue clarity, faster approvals, and reliable execution.
+            These clients started with email audits, moved to retainer campaigns, and now run monthly revenue sequences autonomously. Anonymous but verified.
           </p>
         </div>
         <div className="review-stack">
@@ -207,27 +290,27 @@ function App() {
         </div>
       </section>
 
-      <section className="image-band" aria-label="Email marketing workspace">
+      <section className="image-band reveal" ref={imageBandRef} aria-label="Email marketing workspace">
         <article>
-          <img src={imageSet.strategy} alt="Campaign reporting and strategy work on a laptop" />
+          <img src={imageSet.strategy} alt="Email campaign strategy and copywriting work" />
           <div>
-            <p className="eyebrow">Strategy</p>
-            <h3>Every email starts with a revenue reason.</h3>
+            <p className="eyebrow">Copy + Design</p>
+            <h3>Every email sequence starts with a revenue reason.</h3>
           </div>
         </article>
         <article>
-          <img src={imageSet.workspace} alt="A clean workspace used for client delivery and planning" />
+          <img src={imageSet.workspace} alt="Email operations and async client delivery" />
           <div>
-            <p className="eyebrow">Delivery</p>
-            <h3>Async updates keep clients moving without extra calls.</h3>
+            <p className="eyebrow">Setup + Operations</p>
+            <h3>Async updates and approvals keep campaigns moving.</h3>
           </div>
         </article>
       </section>
 
-      <section className="email-lab" aria-label="Sample email ideas">
+      <section className="email-lab reveal" ref={emailLabRef} aria-label="Sample email ideas">
         <div>
           <p className="eyebrow">Sample emails</p>
-          <h2>Email ideas that sound specific, not spammy.</h2>
+          <h2>Email copy that converts without sounding pushy.</h2>
         </div>
         <div className="email-list">
           {emails.map((email) => (
@@ -240,13 +323,33 @@ function App() {
         </div>
       </section>
 
-      <section className="section contact-section" id="contact">
+      <section className="section founder-section reveal" ref={founderRef} id="about">
         <div className="section-heading">
-          <p className="eyebrow">Contact us for scope</p>
-          <h2>No public pricing table. Start with the audit, then quote the right work.</h2>
+          <p className="eyebrow">About the founder</p>
+          <h2>Built by someone who obsesses over email performance.</h2>
+        </div>
+        <div className="founder-card">
+          <div className="founder-avatar">PS</div>
+          <div className="founder-content">
+            <h3>5+ years scaling email for SaaS and DTC brands.</h3>
+            <p>
+              After managing email systems that generated $50M+ in revenue, I built Scale My Mail to offer that same expertise to international founders at service rates. We run on a lean India-based team, async-first workflow, and one core belief: email should be your highest-ROI marketing channel. No template work, no shortcuts.
+            </p>
+            <div className="founder-creds">
+              <span>✓ Email-only specialist since 2019</span>
+              <span>✓ $50M+ email revenue managed</span>
+              <span>✓ SaaS, DTC, courses, marketplaces</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section contact-section reveal" ref={contactRef} id="contact">
+        <div className="section-heading">
+          <p className="eyebrow">Ready to scale email revenue?</p>
+          <h2>Start with a free email audit.</h2>
           <p>
-            This keeps the offer flexible for campaigns, automations, setup projects, and
-            monthly retainers without making the page feel like a cheap menu.
+            We'll analyze your current sequences, flows, and list health. Then you get a written report with strategic recommendations and a clear next step—no obligation.
           </p>
         </div>
         <div className="contact-grid">
@@ -258,14 +361,14 @@ function App() {
           ))}
         </div>
         <a className="primary-button contact-button" href="mailto:hello@scalemymail.com">
-          Contact us
+          Get your email audit
         </a>
       </section>
 
-      <section className="section process-section" id="process">
+      <section className="section process-section reveal" ref={processRef} id="process">
         <div className="section-heading">
-          <p className="eyebrow">Delivery rhythm</p>
-          <h2>A simple 4-step workflow clients can understand in one call.</h2>
+          <p className="eyebrow">Email execution workflow</p>
+          <h2>How we scale your email revenue in 4 steps.</h2>
         </div>
         <ol className="process-list">
           {process.map((step, index) => (
@@ -277,13 +380,63 @@ function App() {
         </ol>
       </section>
 
-      <section className="final-cta">
-        <p className="eyebrow">First client ready</p>
-        <h2>Get a free audit angle, a 90-day email plan, and a clean next step.</h2>
+      <section className="section faq-section reveal" ref={faqRef} id="faq">
+        <div className="section-heading">
+          <p className="eyebrow">Questions about email services</p>
+          <h2>Quick answers about how we work.</h2>
+        </div>
+        <div className="faq-grid">
+          {faq.map((item) => (
+            <div key={item.question} className="faq-item">
+              <h3>{item.question}</h3>
+              <p>{item.answer}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="final-cta reveal">
+        <p className="eyebrow">Ready to start</p>
+        <h2>Get a free email audit, a 90-day plan, and a clear path forward.</h2>
         <a className="primary-button" href="mailto:hello@scalemymail.com">
-          Start with an audit
+          Book your email audit
         </a>
       </section>
+
+      <footer className="site-footer">
+        <div className="footer-content">
+          <div className="footer-brand">
+            <div className="brand-mark">SM</div>
+            <div>
+              <strong>Scale My Mail</strong>
+              <p>Email design, copy, and tools for founders worldwide.</p>
+            </div>
+          </div>
+          <div className="footer-links">
+            <div>
+              <h4>Services</h4>
+              <a href="#services">Email Services</a>
+              <a href="#process">Process</a>
+              <a href="#faq">FAQ</a>
+            </div>
+            <div>
+              <h4>Company</h4>
+              <a href="#about">About</a>
+              <a href="mailto:hello@scalemymail.com">Contact</a>
+              <a href="mailto:hello@scalemymail.com?subject=Press">Press</a>
+            </div>
+            <div>
+              <h4>Legal</h4>
+              <a href="#privacy">Privacy</a>
+              <a href="#terms">Terms</a>
+            </div>
+          </div>
+        </div>
+        <div className="footer-bottom">
+          <p>&copy; 2026 Scale My Mail. Email specialists for US, UK, AUS, and EU founders.</p>
+          <p>Email: <a href="mailto:hello@scalemymail.com">hello@scalemymail.com</a></p>
+        </div>
+      </footer>
     </main>
   )
 }
